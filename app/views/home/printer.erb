@@ -1,8 +1,8 @@
 <%- #                             # <- 32 char mark -%>
 bl <%= greeting -%> <%= user.firstname %>
-nl Here's your printout from
+nl  Here's your printout from
 nl <%= Time.zone.now.strftime("%d/%m at %H:%M") %>
-nl 
+nl
 <%- if user.print_email -%>
 uc Email summary
 <%- if user.mail_summary -%>
@@ -13,7 +13,7 @@ nl You have <%= pluralize(user.unread_mail_count, 'unread email') %>.
 <%- else -%>
 nl I couldn't fetch your email information.
 <%- end -%>
-nl   
+nl
 <%- end -%>
 <%- if user.print_calendar -%>
 <%- @agenda = user.todays_agenda -%>
@@ -21,12 +21,12 @@ uc Today's agenda
 <%- if !@agenda -%>
 nl Couldn't fetch your agenda. Maybe
 nl you need to log in again?
-nl   
+nl
 <%- else -%>
 <%- if @agenda.blank? -%>
 nl You have nothing on your agenda.
 nl Relax, read a book, write code.
-nl    
+nl
 <%- end -%>
 <%- @agenda.each do |event| -%>
 <%- if event.start.dateTime and event.end.dateTime -%>
@@ -36,20 +36,20 @@ nc <%= event.start.date -%> - <%= event.end.date %>
 <%- end -%>
 <%= raw(wrap("nl", raw(event.summary))) %>
 <%= raw(wrap("nr", raw("(#{event.calendar})"))) %>
-nl    
+nl
 <%- end -%>
-<%- end -%> 
+<%- end -%>
 <%- end -%>
 <%- if user.print_stories -%>
 uc Recent Stories on The Times
 <%- if recent_stories == [] -%>
 nl I couldn't get any stories.
 nl Sorry :(
-nl    
+nl
 <%- else -%>
 <%- recent_stories.each do |story| -%>
 <%= raw(wrap("nl", ascii(story))) %>
-nl   
+nl
 <%- end -%>
 <%- end -%>
 <%- end -%>
@@ -59,7 +59,7 @@ uc Latest Tweets
 il <%= tweet.user.screen_name %>
 ul <%= tweet.created_at.in_time_zone(user.time_zone).strftime("%H:%M:%S") %>
 <%= raw(wrap("nl", raw(tweet.text))) %>
-nl 
+nl
 <%- end -%>
 <%- end -%>
 <%- if which("fortune") and user.print_qotd -%>
