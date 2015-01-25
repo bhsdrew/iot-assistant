@@ -64,3 +64,6 @@ config_filename = File.join Rails.root, 'config', 'config.yml'
 APP_CONFIG = YAML.load(ERB.new(IO.read config_filename).result)[Rails.env]
 
 raise "Please specify a printer key!" unless APP_CONFIG[:printer_key]
+
+require 'rvg/rvg'
+include Magick

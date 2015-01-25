@@ -50,3 +50,6 @@ gem 'typhoeus'
 
 # XML parsing
 gem 'nokogiri'
+
+# for images
+gem 'rmagick'

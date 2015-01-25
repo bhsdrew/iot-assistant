@@ -7,6 +7,7 @@ IotPrinterFront::Application.routes.draw do
 
   # Preview
   match '/preview' => 'home#print_debug'
+  match '/preview/image' => 'home#image_debug'
 
   # User settings
   get "/user/settings" => "users#settings", :as => :user_settings
@@ -34,7 +35,7 @@ IotPrinterFront::Application.routes.draw do
     get '/printer' => "home#printer"
     get '/ino_printer_remote.ino' => "home#printer_file", :as => "printer_file"
     resources :users, :except => [:show, :new, :create] do
-      member do 
+      member do
         post "login_as"
       end
     end

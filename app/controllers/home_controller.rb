@@ -13,14 +13,19 @@ class HomeController < ApplicationController
     if current_user.count_print_options == 0
       redirect_to root_path, :alert => "Specify that you want something to print!" and return
     end
-    printout = current_user.printouts.create(content: render_to_string("home/printer.erb", :layout => false, :locals => {:user => current_user}))
+    printout = current_user.printouts.create(content: render_to_string("home/image.erb", :layout => false, :locals => {:user => current_user}))
     printout.save!
     redirect_to root_path, :notice => "Your printout has been queued!"
   end
-  
+
   # Public: Show the user what their printout might look like (ish).
   def print_debug
     render "home/printer", :locals => {:user => current_user}, :content_type => Mime::TEXT, :layout => false
+  end
+
+  # Public: Show the user what their printout might look like (ish).
+  def image_debug
+    render "home/image", :locals => {:user => current_user}, :content_type => Mime::TEXT, :layout => false
   end
 
   # Public: Endpoint the printer hits. Gives the printer a printout (if one
