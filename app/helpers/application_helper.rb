@@ -64,7 +64,7 @@ module ApplicationHelper
 
 
   def image
-    @image = base64_image
+    Base64.encode64(File.binread("image.png"))
   end
 
   def base64_image
